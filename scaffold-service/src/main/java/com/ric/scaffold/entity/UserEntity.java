@@ -3,7 +3,6 @@ package com.ric.scaffold.entity;
 
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableName;
-import entity.AbstractEntity;
 import lombok.Data;
 
 @Data
