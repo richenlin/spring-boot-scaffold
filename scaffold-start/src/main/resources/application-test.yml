@@ -1,0 +1,98 @@
+spring:
+  shardingsphere:
+    props:
+      sql:
+        show: true  # 开启显示 SQL
+    sharding:
+      default-data-source-name: master
+      # 拆分的表配置
+      # tables:
+      #   t_order:  # 分表逻辑表名，用 MyBatis 操作逻辑表
+      #     actual-data-nodes: ds$->{2019..2020}.t_order_$->{0..1}  # 实际数据节点
+      #     database-strategy:  # 分库策略
+      #       standard:
+      #         sharding-column: create_time
+      #         precise-algorithm-class-name: com.example.demo.config.sharding.CreateTimeShardingDatabaseAlgorithm
+      #     table-strategy:  # 分表策略
+      #       standard:
+      #         sharding-column: car_park_id
+      #         precise-algorithm-class-name: com.example.demo.config.sharding.CarParkShardingTableAlgorithm
+    masterslave:
+      name: ms
+      master-data-source-name: master
+      slave-data-source-names: slave
+      load-balance-algorithm-type: round_robin
+    datasource:
+      # 数据源配置
+      names: master,slave
+      master:
+        type: com.alibaba.druid.pool.DruidDataSource
+        driver-class-name: org.h2.Driver
+        url: jdbc:h2:file:~/testdb1;AUTO_SERVER=TRUE;DB_CLOSE_ON_EXIT=FALSE;AUTO_RECONNECT=TRUE
+        username: sa
+        password:
+        initialSize: 5  # 初始化连接池数量
+        minIdle: 5      # 最小空闲连接池
+        minPoolSize: 5  # 最小连接数量
+        maxPoolSize: 20 # 最大连接数量
+        validationQuery: SELECT 1
+        testWhileIdle: true
+        testOnBorrow: true
+        maxWait: 60000
+        poolPreparedStatements: false  # 是否缓存 preparedStatement，mysql 下建议关闭
+        maxOpenPreparedStatements: -1  # 启用 PSCache 时配置
+        filters: stat,wall,log4j2       # 配置监控统计拦截 filters
+        connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=5000  # 慢 SQL 记录
+        useGlobalDataSourceStat: true
+      slave:
+        type: com.alibaba.druid.pool.DruidDataSource
+        driver-class-name: org.h2.Driver
+        url: jdbc:h2:file:~/testdb2;AUTO_SERVER=TRUE;DB_CLOSE_ON_EXIT=FALSE;AUTO_RECONNECT=TRUE
+        username: sa
+        password:
+        initialSize: 5
+        minIdle: 5
+        minPoolSize: 5
+        maxPoolSize: 20
+        validationQuery: SELECT 1
+        testWhileIdle: true
+        testOnBorrow: true
+        maxWait: 60000
+        poolPreparedStatements: false
+        maxOpenPreparedStatements: -1
+        filters: stat,wall,log4j2
+        connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=5000
+        useGlobalDataSourceStat: true
+
+  main:
+    allow-bean-definition-overriding: true
+  jpa:
+    open-in-view: false
+
+druid:
+  loginUsername: druid
+  loginPassword: druid
+
+sharding:
+  jdbc:
+    config:
+      masterslave:
+        load-balance-algorithm-type: random
+
+mybatis-plus:
+  datasource: dataSource
+  mapper-locations: classpath*:/mapper/**/*Mapper.xml
+  type-aliases-package: com.ric.scaffold.entity
+  configuration:
+    map-underscore-to-camel-case: true  # 下划线转驼峰命名映射
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  global-config:
+    db-config:
+      id-type: AUTO
+      table-prefix: tb_
+
+# H2 控制台配置
+h2:
+  console:
+    enabled: true  # 启用 H2 控制台
+    path: /h2-console  # 控制台访问路径

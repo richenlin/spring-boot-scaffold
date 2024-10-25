@@ -1,0 +1,29 @@
+server:
+  port: 8000
+
+spring:
+  application:
+    name: scaffold  # 服务名称
+  profiles:
+    active: dev
+
+# 日志配置
+logging:
+  level:
+    root: INFO
+#    com.ric.scaffold.module.dao: TRACE
+
+# Actuator 配置
+management:
+  server:
+    port: 8081
+  endpoints:
+    jmx:
+      exposure:
+        include: health,info
+    web:
+      exposure:
+        include: health,info
+  endpoint:
+    health:
+      show-details: ALWAYS
