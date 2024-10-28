@@ -1,8 +1,8 @@
 package com.ric.scaffold.utils;
 
 /**
- * @author：ric
- * @date 2023-03-31 14:28
+ * @author ：ric
+ * @date : 2023-03-31 14:28
  * @description 雪花 ID 工具类
  *  Twitter_Snowflake
  *  SnowFlake的结构如下(每部分用-分开):

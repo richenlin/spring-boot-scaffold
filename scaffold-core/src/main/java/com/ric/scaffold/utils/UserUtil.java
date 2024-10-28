@@ -9,6 +9,7 @@ import java.util.Locale;
 /**
  * 用户工具类
  *
+ * @author ric
  */
 public class UserUtil {
 

@@ -14,6 +14,7 @@ import java.io.IOException;
  * 用户filter，设置当前用户和语言到threadlocal中。
  *
  *
+ * @author ric
  */
 @WebFilter(filterName = "userFilter", urlPatterns = "/*")
 public class UserFilter implements Filter {

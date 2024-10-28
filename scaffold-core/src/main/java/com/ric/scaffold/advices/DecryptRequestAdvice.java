@@ -21,7 +21,7 @@ import java.lang.reflect.Type;
 import java.nio.charset.StandardCharsets;
 
 /**
- * @author：Java陈序员
+ * @author：ric
  * @date 2023-04-28 9:54
  * @description 请求参数解密
  */

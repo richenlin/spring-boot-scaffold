@@ -16,7 +16,7 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseBodyAdvice;
 import com.ric.scaffold.utils.RSAUtil;
 
 /**
- * @author：Java陈序员
+ * @author：ric
  * @date 2023-04-28 10:33
  * @description 响应参数加密
  */
