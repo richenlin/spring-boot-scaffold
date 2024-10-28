@@ -8,26 +8,13 @@
         <version>0.0.1-SNAPSHOT</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
-    <artifactId>scaffold-start</artifactId>
-    <name>scaffold-start</name>
-    <description>入口模块，引导工程启动以及基础配置</description>
+    <artifactId>scaffold-domain</artifactId>
+    <name>scaffold-domain</name>
+    <description>service 模块，对应 MVC 的 M 概念，存放核心业务逻辑代码</description>
     <dependencies>
-
         <dependency>
             <groupId>com.ric</groupId>
-            <artifactId>scaffold-domain</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
-            <scope>compile</scope>
-        </dependency>
-        <dependency>
-            <groupId>com.ric</groupId>
-            <artifactId>scaffold-web</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
-            <scope>compile</scope>
-        </dependency>
-        <dependency>
-            <groupId>com.ric</groupId>
-            <artifactId>scaffold-api</artifactId>
+            <artifactId>scaffold-core</artifactId>
             <version>0.0.1-SNAPSHOT</version>
             <scope>compile</scope>
         </dependency>

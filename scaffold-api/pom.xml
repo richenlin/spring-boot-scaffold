@@ -17,11 +17,13 @@
             <groupId>com.ric</groupId>
             <artifactId>scaffold-core</artifactId>
             <version>0.0.1-SNAPSHOT</version>
+            <scope>compile</scope>
         </dependency>
         <dependency>
             <groupId>com.ric</groupId>
-            <artifactId>scaffold-service</artifactId>
+            <artifactId>scaffold-domain</artifactId>
             <version>0.0.1-SNAPSHOT</version>
+            <scope>compile</scope>
         </dependency>
     </dependencies>
 

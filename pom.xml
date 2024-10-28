@@ -19,7 +19,7 @@
         <module>scaffold-start</module>
         <module>scaffold-web</module>
         <module>scaffold-api</module>
-        <module>scaffold-service</module>
+        <module>scaffold-domain</module>
         <module>scaffold-core</module>
     </modules>
 
@@ -134,7 +134,7 @@
             </dependency>
             <dependency>
                 <groupId>com.ric</groupId>
-                <artifactId>scaffold-service</artifactId>
+                <artifactId>scaffold-domain</artifactId>
                 <version>0.0.1-SNAPSHOT</version>
             </dependency>
         </dependencies>
