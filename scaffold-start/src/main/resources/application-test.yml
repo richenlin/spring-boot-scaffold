@@ -30,8 +30,8 @@ spring:
       names: master,slave
       master:
         type: com.alibaba.druid.pool.DruidDataSource
-        driver-class-name: org.h2.Driver
-        url: jdbc:h2:file:~/testdb1;AUTO_SERVER=TRUE;DB_CLOSE_ON_EXIT=FALSE;AUTO_RECONNECT=TRUE
+        driver-class-name: com.mysql.cj.jdbc.Driver
+        url: jdbc:mysql://localhost:3306/chat-hub?userSSL=true&useUnicode=true&characterEncoding=utf-8&serverTimezone=GMT%2B8
         username: sa
         password:
         initialSize: 5  # 初始化连接池数量
@@ -49,8 +49,8 @@ spring:
         useGlobalDataSourceStat: true
       slave:
         type: com.alibaba.druid.pool.DruidDataSource
-        driver-class-name: org.h2.Driver
-        url: jdbc:h2:file:~/testdb2;AUTO_SERVER=TRUE;DB_CLOSE_ON_EXIT=FALSE;AUTO_RECONNECT=TRUE
+        driver-class-name: com.mysql.cj.jdbc.Driver
+        url: jdbc:mysql://localhost:3306/chat-hub?userSSL=true&useUnicode=true&characterEncoding=utf-8&serverTimezone=GMT%2B8
         username: sa
         password:
         initialSize: 5

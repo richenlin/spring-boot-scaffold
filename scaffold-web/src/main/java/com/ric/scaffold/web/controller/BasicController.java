@@ -22,6 +22,7 @@ import com.ric.scaffold.domain.user.service.IUserService;
 import com.ric.scaffold.web.consts.LogConst;
 import com.ric.scaffold.core.annotations.Log;
 import com.ric.scaffold.domain.user.dto.UserDto;
+import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -44,6 +45,7 @@ public class BasicController {
      * @param name
      * @return
      */
+    @ApiOperation(value = "获取用户信息", notes = "根据用户ID获取用户的详细信息")
     @RequestMapping("/hello")
     @ResponseBody
     @Log(action = LogConst.ACTION_QUERY, itemType = LogConst.ITEM_TYPE_MODULE, param = "#name")

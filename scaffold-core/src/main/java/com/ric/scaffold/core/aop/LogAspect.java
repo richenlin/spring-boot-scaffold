@@ -18,7 +18,7 @@ import com.ric.scaffold.core.utils.SPELUtil;
 import com.ric.scaffold.core.utils.UserUtil;
 
 /**
- *  日志信息处理AOP
+ *  日志染色处理AOP
  *  把需要的信息从参数中提取出来，转成json字符串放到MDC中使用。
  *
  *  注意：注解不支持重入（就是嵌套的方法里面还有LOG注解），因为我觉得不需要嵌套

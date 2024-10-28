@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 @Slf4j
-public class UserServiceService implements IUserService {
+public class UserService implements IUserService {
   /**
    * @param pageable
    * @param keyword
