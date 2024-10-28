@@ -14,7 +14,7 @@ public class RandomUtil {
 
   private static final String FIX_STRING = "abcdefghijklmnopqrstuvwxyz1234567890ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
-  private static Random random;
+  private static volatile Random random;
 
   // 使用双重检查机制来实现单例模式
   public static Random getRandom() {

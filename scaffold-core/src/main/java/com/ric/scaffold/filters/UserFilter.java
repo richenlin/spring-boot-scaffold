@@ -65,9 +65,9 @@ public class UserFilter implements Filter {
       return null;
     }
 
-    for (int i = 0; i < cookies.length; i++) {
-      if (UserUtil.KEY_LANG.equals(cookies[i].getName())) {
-        return cookies[i].getValue();
+    for (Cookie cookie : cookies) {
+      if (UserUtil.KEY_LANG.equals(cookie.getName())) {
+        return cookie.getValue();
       }
     }
 

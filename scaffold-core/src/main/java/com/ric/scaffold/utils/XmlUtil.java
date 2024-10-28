@@ -35,7 +35,7 @@ public class XmlUtil {
    */
   public static Document newDocument(final String xml) {
     final DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
-    final Map<String, Boolean> features = new HashMap<String, Boolean>();
+    final Map<String, Boolean> features = new HashMap<String, Boolean>(16);
     features.put(XMLConstants.FEATURE_SECURE_PROCESSING, true);
     features.put("http://apache.org/xml/features/nonvalidating/load-external-dtd", false);
     for (final Map.Entry<String, Boolean> entry : features.entrySet()) {
@@ -210,7 +210,7 @@ public class XmlUtil {
 
     @Override
     public void startDocument() throws SAXException {
-      this.attributes = new HashMap<String, Object>();
+      this.attributes = new HashMap<String, Object>(16);
     }
 
     @Override

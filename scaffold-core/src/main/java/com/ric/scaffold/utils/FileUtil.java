@@ -81,11 +81,11 @@ public class FileUtil {
 
     File[] files = file.listFiles();
     if (files != null) {
-      for (int i = 0; i < files.length; i++) {
-        if (files[i].isFile()) {
-          files[i].delete();
+      for (File value : files) {
+        if (value.isFile()) {
+          value.delete();
         } else {
-          deleteDirectory(files[i].getPath());
+          deleteDirectory(value.getPath());
         }
       }
     }

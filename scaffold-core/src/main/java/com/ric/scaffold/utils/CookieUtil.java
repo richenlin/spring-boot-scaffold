@@ -57,7 +57,7 @@ public class CookieUtil {
     if (cookies != null && cookies.length > 0) {
       return Arrays.stream(cookies).collect(Collectors.toMap(Cookie::getName, Cookie::getValue));
     } else {
-      return new HashMap<>();
+      return new HashMap<>(16);
     }
   }
 

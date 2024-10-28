@@ -61,13 +61,6 @@ public class RequestLimitAspect {
       String key = requestLimit.key();
 
       RateLimiter rateLimiter = null;
-//            if (!rateLimiterMap.containsKey(key)) {
-//                // map 中没有 key
-//                rateLimiter = RateLimiter.create(requestLimit.permitsPerSecond());
-//                rateLimiterMap.put(key, rateLimiter);
-//            }
-
-//            rateLimiter = rateLimiterMap.get(key);
 
       if (!cache.asMap().containsKey(key)) {
         rateLimiter = RateLimiter.create(requestLimit.permitsPerSecond());
@@ -83,10 +76,13 @@ public class RequestLimitAspect {
         String result = JSON.toJSONString(ResultBean.fail(500, requestLimit.message()));
 
         // todo
-        response.setContentType("application/json");
-        response.setCharacterEncoding("UTF-8");
-        PrintWriter writer = response.getWriter();
-        writer.println(new ObjectMapper().writeValueAsString(result));
+        if (response != null) {
+          response.setContentType("application/json");
+          response.setCharacterEncoding("UTF-8");
+          PrintWriter writer = null;
+          writer = response.getWriter();
+          writer.println(new ObjectMapper().writeValueAsString(result));
+        }
 
         return null;
       }

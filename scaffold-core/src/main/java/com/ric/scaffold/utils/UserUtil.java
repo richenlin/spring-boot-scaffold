@@ -12,9 +12,9 @@ import java.util.Locale;
  */
 public class UserUtil {
 
-  private final static ThreadLocal<User> tlUser = new ThreadLocal<User>();
+  private final static ThreadLocal<User> TL_USER = new ThreadLocal<User>();
 
-  private final static ThreadLocal<Locale> tlLocale = new ThreadLocal<Locale>() {
+  private final static ThreadLocal<Locale> TL_LOCALE = new ThreadLocal<Locale>() {
     @Override
     protected Locale initialValue() {
       // 语言的默认值
@@ -29,7 +29,7 @@ public class UserUtil {
   public static final String KEY_USER = "user";
 
   public static void setUser(User user) {
-    tlUser.set(user);
+    TL_USER.set(user);
 
     // 把用户信息放到log4j
     MDC.put(KEY_USER, user.getName());
@@ -41,7 +41,7 @@ public class UserUtil {
    * @return
    */
   public static User getUserIfLogin() {
-    return tlUser.get();
+    return TL_USER.get();
   }
 
   /**
@@ -50,7 +50,7 @@ public class UserUtil {
    * @return
    */
   public static User getUser() {
-    User user = tlUser.get();
+    User user = TL_USER.get();
 
     if (user == null) {
       throw new UnloginException();
@@ -68,16 +68,16 @@ public class UserUtil {
   }
 
   public static void setLocale(Locale locale) {
-    tlLocale.set(locale);
+    TL_LOCALE.set(locale);
   }
 
   public static Locale getLocale() {
-    return tlLocale.get();
+    return TL_LOCALE.get();
   }
 
   public static void clearAllUserInfo() {
-    tlUser.remove();
-    tlLocale.remove();
+    TL_USER.remove();
+    TL_LOCALE.remove();
 
     MDC.remove(KEY_USER);
   }

@@ -105,9 +105,8 @@ public class WordUtil {
                                   List<String[]> tableList) {
     //获取表格对象集合
     List<XWPFTable> tables = document.getTables();
-    for (int i = 0; i < tables.size(); i++) {
+    for (XWPFTable table : tables) {
       //只处理行数大于等于2的表格，且不循环表头
-      XWPFTable table = tables.get(i);
       if (table.getRows().size() > 1) {
         //判断表格是需要替换还是需要插入，判断逻辑有$为替换，表格无$为插入
         if (checkText(table.getText())) {
@@ -178,7 +177,7 @@ public class WordUtil {
    */
   private static boolean checkText(String text) {
     boolean check = false;
-    if (text.indexOf("$") != -1) {
+    if (text.contains("$")) {
       check = true;
     }
     return check;
@@ -198,7 +197,7 @@ public class WordUtil {
     for (Map.Entry<String, String> textSet : textSets) {
       //匹配模板与替换值 格式${key}
       String key = "${" + textSet.getKey() + "}";
-      if (value.indexOf(key) != -1) {
+      if (value.contains(key)) {
         value = value.replace("${" + textSet.getKey() + "}", textSet.getValue());
       }
     }

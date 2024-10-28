@@ -22,7 +22,7 @@ import com.ric.scaffold.utils.RSAUtil;
  */
 @RestControllerAdvice
 @Order(Ordered.HIGHEST_PRECEDENCE)
-public class EncryptResponseAdvice implements ResponseBodyAdvice {
+public class EncryptResponseAdvice implements ResponseBodyAdvice<Object> {
 
   @Override
   public boolean supports(MethodParameter methodParameter, Class aClass) {

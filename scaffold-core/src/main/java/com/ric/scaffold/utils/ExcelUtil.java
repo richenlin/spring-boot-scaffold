@@ -58,6 +58,9 @@ public class ExcelUtil {
    */
   private static boolean isContainTitle = true;
 
+  private static final Pattern PATTREN =
+      Pattern.compile("[-+]?(([0-9]+)([.]([0-9]+))?|([.]([0-9]+))?)$");
+
   /**
    * excel 导入
    * @param excelFile excel文件
@@ -82,7 +85,7 @@ public class ExcelUtil {
 
         if (sheet != null) {
           int i = 2;
-          String values[];
+          String[] values;
 
           Row row = sheet.getRow(i);
           while (row != null) {
@@ -94,8 +97,8 @@ public class ExcelUtil {
               Cell cell = row.getCell(j);
 
               if (cell != null) {
-                // 设置单元格内容类型
-                cell.setCellType(CellType.STRING);
+                // 设置单元格内容类型 deprecated
+//                cell.setCellType(CellType.STRING);
                 // 获取单元格值
                 String cellValue = (cell.getStringCellValue() == null) ? null : cell.getStringCellValue();
 
@@ -307,7 +310,7 @@ public class ExcelUtil {
     if (isNumeric(valueStr)) {
       hssfCell.setCellStyle(cellStyle);
       hssfCell.setCellType(CellType.NUMERIC);
-      hssfCell.setCellValue(Double.valueOf(valueStr));
+      hssfCell.setCellValue(Double.parseDouble(valueStr));
     } else {
       hssfCell.setCellStyle(cellStyle);
       hssfCell.setCellType(CellType.STRING);
@@ -316,10 +319,8 @@ public class ExcelUtil {
   }
 
   private static boolean isNumeric(String valueStr) {
-    Pattern pattren =
-        Pattern.compile("[-+]?(([0-9]+)([.]([0-9]+))?|([.]([0-9]+))?)$");
     if (valueStr != null && !"".equals(valueStr.trim())) {
-      Matcher matcher = pattren.matcher(valueStr);
+      Matcher matcher = PATTREN.matcher(valueStr);
       if (matcher.matches()) {
         if (!valueStr.contains(".") && valueStr.startsWith("0")) {
           return false;

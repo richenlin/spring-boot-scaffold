@@ -52,7 +52,7 @@ public class RSAUtil {
    * @return
    */
   public static Map<String, Object> generateKeyPairs() {
-    Map<String, Object> keyPairs = new HashMap<>();
+    Map<String, Object> keyPairs = new HashMap<>(16);
 
     try {
       // KeyPairGenerator 用于生成公钥和私钥对
@@ -102,8 +102,10 @@ public class RSAUtil {
       final byte[] bytes = content.getBytes(charset);
       //字符串长度
       final int len = bytes.length;
-      int offset = 0;//偏移量
-      int i = 0;//所分的段数
+      //偏移量
+      int offset = 0;
+      //所分的段数
+      int i = 0;
       final ByteArrayOutputStream bos = new ByteArrayOutputStream();
 
       while (len > offset) {

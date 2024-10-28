@@ -22,7 +22,10 @@ import static com.github.dozermapper.core.loader.api.TypeMappingOptions.mapNull;
  * @date 2023-07-24 16:30
  * @description 对象拷贝工具
  */
-// 将构造器私有化
+
+/**
+ * 将构造器私有化
+ */
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class BeanUtil {
 

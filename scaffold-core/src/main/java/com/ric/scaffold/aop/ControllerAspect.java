@@ -43,7 +43,7 @@ public class ControllerAspect {
   }
 
   private ResultBean<?> handlerException(ProceedingJoinPoint pjp, Throwable e) {
-    ResultBean<?> result = new ResultBean();
+    ResultBean<?> result = new ResultBean<>();
 
     // 已知异常
     if (e instanceof CheckException) {

@@ -28,14 +28,21 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @Controller
 public class BasicController {
 
-    // http://127.0.0.1:8080/hello?name=lisi
+    /**
+     * http://127.0.0.1:8080/hello?name=lisi
+     * @param name
+     * @return
+     */
     @RequestMapping("/hello")
     @ResponseBody
     public String hello(@RequestParam(name = "name", defaultValue = "unknown user") String name) {
         return "Hello " + name;
     }
 
-    // http://127.0.0.1:8080/user
+    /***
+     * http://127.0.0.1:8080/user
+     * @return
+     */
     @RequestMapping("/user")
     @ResponseBody
     public User user() {
@@ -45,19 +52,32 @@ public class BasicController {
         return user;
     }
 
-    // http://127.0.0.1:8080/save_user?name=newName&age=11
+    /**
+     *  http://127.0.0.1:8080/save_user?name=newName&age=11
+     * @param u
+     * @return
+     */
     @RequestMapping("/save_user")
     @ResponseBody
     public String saveUser(User u) {
         return "user will save: name=" + u.getName() + ", age=" + u.getAge();
     }
 
-    // http://127.0.0.1:8080/html
+    /**
+     * http://127.0.0.1:8080/html
+     * @return
+     */
     @RequestMapping("/html")
     public String html(){
         return "index.html";
     }
 
+    /**
+     *
+     * @param name
+     * @param age
+     * @param user
+     */
     @ModelAttribute
     public void parseUser(@RequestParam(name = "name", defaultValue = "unknown user") String name
             , @RequestParam(name = "age", defaultValue = "12") Integer age, User user) {
