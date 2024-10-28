@@ -1,7 +1,7 @@
-package com.ric.scaffold.domain.service;
+package com.ric.scaffold.domain.user.service;
 
 import com.ric.scaffold.core.beans.PageResp;
-import com.ric.scaffold.domain.dto.UserDto;
+import com.ric.scaffold.domain.user.dto.UserDto;
 import org.springframework.data.domain.Pageable;
 
 public interface IUserService {

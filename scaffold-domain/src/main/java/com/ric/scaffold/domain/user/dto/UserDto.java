@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.ric.scaffold.domain.dto;
+package com.ric.scaffold.domain.user.dto;
 
 import lombok.Data;
 

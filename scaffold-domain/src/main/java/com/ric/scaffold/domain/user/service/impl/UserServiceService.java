@@ -1,8 +1,8 @@
-package com.ric.scaffold.domain.service.impl;
+package com.ric.scaffold.domain.user.service.impl;
 
 import com.ric.scaffold.core.beans.PageResp;
-import com.ric.scaffold.domain.dto.UserDto;
-import com.ric.scaffold.domain.service.IUserService;
+import com.ric.scaffold.domain.user.dto.UserDto;
+import com.ric.scaffold.domain.user.service.IUserService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;

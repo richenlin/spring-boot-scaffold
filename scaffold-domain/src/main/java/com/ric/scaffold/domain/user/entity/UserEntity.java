@@ -1,4 +1,4 @@
-package com.ric.scaffold.domain.entity;
+package com.ric.scaffold.domain.user.entity;
 
 
 import com.baomidou.mybatisplus.annotation.TableField;
