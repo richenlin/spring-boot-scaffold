@@ -1,6 +1,3 @@
-server:
-  port: 8000
-
 spring:
   application:
     name: scaffold  # 服务名称

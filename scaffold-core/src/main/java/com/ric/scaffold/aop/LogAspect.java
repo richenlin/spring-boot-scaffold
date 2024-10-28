@@ -33,7 +33,7 @@ public class LogAspect {
 
   private static final String JSON_KEY = "logjson";
 
-  @Pointcut("@annotation(cn.xiaowenjie.common.annotations.Log)")
+  @Pointcut("@annotation( com.ric.scaffold.annotations.Log)")
   public void logMethod() {
 
   }

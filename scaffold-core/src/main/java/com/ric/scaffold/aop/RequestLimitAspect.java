@@ -42,7 +42,7 @@ public class RequestLimitAspect {
    */
   private final Cache<String, RateLimiter> cache = CacheBuilder.newBuilder().build();
 
-  @Pointcut("@annotation(com.codechen.scaffold.core.annotation.RequestLimit)")
+  @Pointcut("@annotation(com.ric.scaffold.annotations.RequestLimit)")
   public void pointCut() {
 
   }

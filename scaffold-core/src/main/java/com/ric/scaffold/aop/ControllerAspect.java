@@ -22,7 +22,7 @@ import org.springframework.stereotype.Component;
 @Slf4j
 public class ControllerAspect {
 
-  @Pointcut("execution(public cn.xiaowenjie.common.beans.ResultBean *(..))")
+  @Pointcut("execution(public com.ric.scaffold.beans.ResultBean *(..))")
   public void controllerMethod() {
   }
 
