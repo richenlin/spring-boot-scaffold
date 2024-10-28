@@ -19,7 +19,7 @@ package com.ric.scaffold.domain.user.dto;
 import lombok.Data;
 
 /**
- * @author <a href="mailto:chenxilzx1@gmail.com">theonefx</a>
+ * @author ric
  */
 @Data
 public class UserDto {
