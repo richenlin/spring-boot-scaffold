@@ -34,7 +34,7 @@ public class SwaggerConfig {
   @Bean
   public Docket userApi() {
     return new Docket(DocumentationType.SWAGGER_2)
-        .groupName("OpenAPI模块")  // 分组名称
+        .groupName("OpenAPI模块")
         .apiInfo(openApiInfo())
         .select()
         .apis(RequestHandlerSelectors.basePackage("com.ric.scaffold.api.controller"))
@@ -45,7 +45,7 @@ public class SwaggerConfig {
   @Bean
   public Docket orderApi() {
     return new Docket(DocumentationType.SWAGGER_2)
-        .groupName("内部接口模块")  // 分组名称
+        .groupName("内部接口模块")
         .apiInfo(intenalApiInfo())
         .select()
         .apis(RequestHandlerSelectors.basePackage("com.ric.scaffold.web.controller"))
