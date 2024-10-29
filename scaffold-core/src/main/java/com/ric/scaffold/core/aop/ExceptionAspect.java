@@ -20,7 +20,7 @@ import org.springframework.stereotype.Component;
 @Component
 @Order(-99)
 @Slf4j
-public class ControllerAspect {
+public class ExceptionAspect {
 
   @Pointcut("execution(public com.ric.scaffold.core.beans.ResultBean *(..))")
   public void controllerMethod() {
