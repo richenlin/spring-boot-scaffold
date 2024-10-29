@@ -28,13 +28,9 @@ public class ControllerAspect {
 
   @Around("controllerMethod()")
   public Object handlerControllerMethod(ProceedingJoinPoint pjp) {
-    long startTime = System.currentTimeMillis();
-
     ResultBean<?> result;
-
     try {
       result = (ResultBean<?>) pjp.proceed();
-      log.info(pjp.getSignature() + "use time:" + (System.currentTimeMillis() - startTime));
     } catch (Throwable e) {
       result = handlerException(pjp, e);
     }

@@ -1,6 +1,6 @@
 package com.ric.scaffold.core.filters;
 
-import com.ric.scaffold.core.beans.User;
+import com.ric.scaffold.core.beans.UserBean;
 import com.ric.scaffold.core.utils.UserUtil;
 
 import javax.servlet.*;
@@ -44,11 +44,11 @@ public class UserFilter implements Filter {
 
   private void fillUserInfo(HttpServletRequest request) {
     // 用户信息
-    User user = getUserFromSession(request);
+    UserBean userBean = getUserFromSession(request);
     //FIXME User user = getUserFromSpringSecurity();
 
-    if (user != null) {
-      UserUtil.setUser(user);
+    if (userBean != null) {
+      UserUtil.setUser(userBean);
     }
 
     // 语言信息
@@ -75,7 +75,7 @@ public class UserFilter implements Filter {
     return null;
   }
 
-  private User getUserFromSession(HttpServletRequest request) {
+  private UserBean getUserFromSession(HttpServletRequest request) {
     HttpSession session = request.getSession();
 
     //if (session == null) {
@@ -83,7 +83,7 @@ public class UserFilter implements Filter {
     //}
 
     // 从session中获取用户信息放到工具类中
-    return (User) session.getAttribute(UserUtil.KEY_USER);
+    return (UserBean) session.getAttribute(UserUtil.KEY_USER);
   }
 
   @Override

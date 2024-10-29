@@ -1,14 +1,25 @@
 spring:
   application:
-    name: scaffold  # 服务名称
+    name: dev-scaffold  # 服务名称
   profiles:
     active: dev
 
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8
+
+
 # 日志配置
 logging:
-  level:
-    root: INFO
-#    com.ric.scaffold.module.dao: TRACE
+  file:
+    path: "./logs/"
+    max-size: 20MB
+    max-history: 30
+  sensitive:
+    words:
+      - password
+      - secret
+      - token
 
 # Actuator 配置
 management:

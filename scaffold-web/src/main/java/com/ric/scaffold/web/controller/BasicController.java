@@ -15,20 +15,26 @@
  */
 
 package com.ric.scaffold.web.controller;
+
+import javax.validation.Valid;
+
 import com.ric.scaffold.core.beans.PageReq;
 import com.ric.scaffold.core.beans.PageResp;
 import com.ric.scaffold.core.beans.ResultBean;
-import com.ric.scaffold.domain.user.service.IUserService;
-import com.ric.scaffold.web.consts.LogConst;
-import com.ric.scaffold.core.annotations.Log;
 import com.ric.scaffold.domain.user.dto.UserDto;
-import io.swagger.annotations.ApiOperation;
-import lombok.extern.slf4j.Slf4j;
+import com.ric.scaffold.domain.user.service.IUserService;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
-import javax.validation.Valid;
+import io.swagger.annotations.ApiOperation;
+import lombok.extern.slf4j.Slf4j;
 
 /**
  * @author ric
@@ -42,47 +48,43 @@ public class BasicController {
 
     /**
      * http://127.0.0.1:8080/hello?name=lisi
+     * 
      * @param name
      * @return
      */
     @ApiOperation(value = "获取用户信息", notes = "根据用户ID获取用户的详细信息")
     @RequestMapping("/hello")
     @ResponseBody
-    @Log(action = LogConst.ACTION_QUERY, itemType = LogConst.ITEM_TYPE_MODULE, param = "#name")
     public ResultBean<String> hello(@RequestParam(name = "name", defaultValue = "unknown user") String name) {
         return new ResultBean<>("Hello " + name);
     }
 
     /**
      * http://127.0.0.1:8080/getUser?name=lisi
+     * 
      * @return
      */
     @GetMapping("/getUser")
-    @Log(action = LogConst.ACTION_QUERY, itemType = LogConst.ITEM_TYPE_MODULE, param = "#name")
     public ResultBean<UserDto> getUser(@RequestParam(name = "name", defaultValue = "") String name) {
         return new ResultBean<>(userService.getUser(name));
     }
 
     @PostMapping(value = "/listUser")
-    @Log(action = LogConst.ACTION_QUERY, itemType = LogConst.ITEM_TYPE_MODULE, param = "#param")
     public ResultBean<PageResp<UserDto>> listUser(PageReq param) {
         return new ResultBean<>(userService.listPage(param.toPageable(), param.getKeyword()));
     }
 
     @PostMapping("/addUser")
-    @Log(action = LogConst.ACTION_ADD, itemType = LogConst.ITEM_TYPE_MODULE,  itemId = "#UserDto.name")
     public ResultBean<Long> addUser(@RequestBody @Valid UserDto u) {
         return new ResultBean<>(userService.add(u));
     }
 
     @PostMapping("/updateUser")
-    @Log(action = LogConst.ACTION_DELETE, itemType = LogConst.ITEM_TYPE_MODULE, itemId = "#id")
     public ResultBean<Boolean> updateUser(@RequestParam long id) {
         return new ResultBean<>(userService.update(id));
     }
 
     @PostMapping("/deleteUser")
-    @Log(action = LogConst.ACTION_DELETE, itemType = LogConst.ITEM_TYPE_MODULE, itemId = "#id")
     public ResultBean<Boolean> deleteUser(@RequestParam long id) {
         return new ResultBean<>(userService.delete(id));
     }

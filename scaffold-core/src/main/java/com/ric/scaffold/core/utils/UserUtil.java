@@ -1,6 +1,6 @@
 package com.ric.scaffold.core.utils;
 
-import com.ric.scaffold.core.beans.User;
+import com.ric.scaffold.core.beans.UserBean;
 import com.ric.scaffold.core.exceptions.UnloginException;
 import org.slf4j.MDC;
 
@@ -13,7 +13,7 @@ import java.util.Locale;
  */
 public class UserUtil {
 
-  private final static ThreadLocal<User> TL_USER = new ThreadLocal<User>();
+  private final static ThreadLocal<UserBean> TL_USER = new ThreadLocal<UserBean>();
 
   private final static ThreadLocal<Locale> TL_LOCALE = new ThreadLocal<Locale>() {
     @Override
@@ -29,11 +29,11 @@ public class UserUtil {
 
   public static final String KEY_USER = "user";
 
-  public static void setUser(User user) {
-    TL_USER.set(user);
+  public static void setUser(UserBean userBean) {
+    TL_USER.set(userBean);
 
     // 把用户信息放到log4j
-    MDC.put(KEY_USER, user.getName());
+    MDC.put(KEY_USER, userBean.getName());
   }
 
   /**
@@ -41,7 +41,7 @@ public class UserUtil {
    *
    * @return
    */
-  public static User getUserIfLogin() {
+  public static UserBean getUserIfLogin() {
     return TL_USER.get();
   }
 
@@ -50,14 +50,14 @@ public class UserUtil {
    *
    * @return
    */
-  public static User getUser() {
-    User user = TL_USER.get();
+  public static UserBean getUser() {
+    UserBean userBean = TL_USER.get();
 
-    if (user == null) {
+    if (userBean == null) {
       throw new UnloginException();
     }
 
-    return user;
+    return userBean;
   }
 
   public static long getUserId() {
